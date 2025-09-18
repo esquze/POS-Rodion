@@ -3,30 +3,49 @@ public class Student {
     private float kg;
     private int cm;
     private char gender;
-    
+
     public Student(String name, float kg, int cm, char gender) {
         this.setName(name);
         this.setKg(kg);
         this.setCm(cm);
         this.setGender(gender);
     }
-    
+
     public void setName(String name) {
+        if(name.length() < 3 || name.length() > 50) {
+            throw new IllegalArgumentException("Name muss 3-50 Buchstaben haben");
+        }
         this.name = name;
     }
-    
-    public void setKg(float kilogramm) {
-        this.kg = kilogramm;
+
+    public void setKg(float kg) {
+        if(kg < 2.0f || kg > 635.0f) {
+            throw new IllegalArgumentException("Gewicht muss 2 - 635 kg sein");
+        }
+        else {
+            this.kg = kg; 
+        }
     }
-    
+
     public void setCm(int cm) {
-        this.cm = cm;
+        if(cm < 50 || cm > 250) {
+            throw new IllegalArgumentException("Größe muss 50 - 250 cm sein");
+        }
+        else {
+            this.cm = cm; 
+        }
     }
-    
+
     public void setGender(char gender) {
-        this.gender = gender;
+        gender = Character.toLowerCase(gender);
+        if(gender != 'm' && gender != 'w') {
+            throw new IllegalArgumentException("Gender darf 'm' oder 'w' sein");
+        }
+        else {
+            this.gender = gender; 
+        }
     }
-    
+
     public float bmi() {
         return this.kg/((this.cm/100.0f)*(this.cm/100.0f));
     }
@@ -35,11 +54,11 @@ public class Student {
         if(this.gender == 'm') return "männlich";
         return "weiblich";
     }
-    
+
     public String printStudent() {
         return "Name: " + this.name + " (" + this.mannOderFrau() + ")";
     }
-    
+
     public String setGewicht () {
         if(this.gender == 'm') {
             if(bmi() < 20) {
