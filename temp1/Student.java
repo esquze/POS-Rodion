@@ -5,85 +5,89 @@ public class Student {
     private char gender;
 
     public Student(String name, float kg, int cm, char gender) {
-        this.setName(name);
-        this.setKg(kg);
-        this.setCm(cm);
-        this.setGender(gender);
+        setName(name);
+        setKg(kg);
+        setCm(cm);
+        setGender(gender);
+    }
+
+    public Student(String name, boolean isMann, int cm, int kg) {
+        setName(name);
+        setKg(kg);
+        setCm(cm);
+        setGender(isMann ? 'm' : 'w'); // hier habe ich 'w' statt 'f' genommen, damit es passt
     }
 
     public void setName(String name) {
-        if(name.length() < 3 || name.length() > 50) {
-            throw new IllegalArgumentException("Name muss 3-50 Buchstaben haben");
+        if (name.length() < 3 || name.length() > 50) {
+            throw new IllegalArgumentException("Name muss 3-50 Zeichen haben");
         }
         this.name = name;
     }
 
     public void setKg(float kg) {
-        if(kg < 2.0f || kg > 635.0f) {
-            throw new IllegalArgumentException("Gewicht muss 2 - 635 kg sein");
+        if (kg < 2 || kg > 635) {
+            throw new IllegalArgumentException("Ungültiges Gewicht");
         }
-        else {
-            this.kg = kg; 
-        }
+        this.kg = kg;
     }
 
     public void setCm(int cm) {
-        if(cm < 50 || cm > 250) {
-            throw new IllegalArgumentException("Größe muss 50 - 250 cm sein");
+        if (cm < 50 || cm > 250) {
+            throw new IllegalArgumentException("Ungültige Größe");
         }
-        else {
-            this.cm = cm; 
-        }
+        this.cm = cm;
     }
 
     public void setGender(char gender) {
         gender = Character.toLowerCase(gender);
-        if(gender != 'm' && gender != 'w') {
-            throw new IllegalArgumentException("Gender darf 'm' oder 'w' sein");
+        if (gender != 'm' && gender != 'w') {
+            throw new IllegalArgumentException("Geschlecht muss m oder w sein");
         }
-        else {
-            this.gender = gender; 
+        this.gender = gender;
+    }
+
+    // BMI berechnen: Gewicht durch Größe in Metern zum Quadrat
+    public float bmi() {
+        float meter = cm / 100.0f;
+        return kg / (meter * meter);
+    }
+
+    // Alias für die Tests
+    public float getBMI() {
+        return bmi();
+    }
+
+     public String gewichtsklasse() {
+        float bmi = getBMI();
+        if (bmi < 16f) {
+            return "starkes Untergewicht";
+        } else if (bmi < 18.5f) {
+            return "Untergewicht";
+        } else if (bmi < 25f) {
+            return "Normalgewicht";
+        } else if (bmi < 30f) {
+            return "Übergewicht";             
+        } else if (bmi < 35f) {
+            return "Adipositas I";
+        } else if (bmi < 40f) {
+            return "Adipositas II";
+        } else {
+            return "Adipositas III";
         }
     }
 
-    public float bmi() {
-        return this.kg/((this.cm/100.0f)*(this.cm/100.0f));
-    }
+    
 
     public String mannOderFrau() {
-        if(this.gender == 'm') return "männlich";
-        return "weiblich";
+        return (gender == 'm') ? "männlich" : "weiblich";
     }
 
     public String printStudent() {
-        return "Name: " + this.name + " (" + this.mannOderFrau() + ")";
-    }
-
-    public String setGewicht () {
-        if(this.gender == 'm') {
-            if(bmi() < 20) {
-                return "Untergewicht";
-            }
-            else if(bmi() > 25) {
-                return "Übergewicht";
-            }
-            else {
-                return "Normalgewicht";
-            }
-        }
-        else if(this.gender == 'w') {
-            if(bmi() < 19) {
-                return "Untergewicht";
-            }
-            else if(bmi() > 24) {
-                return "Übergewicht";
-            }
-            else {
-                return "Normalgewicht";
-            }
-        }
-        else {
-            return "Error";
-        }
+        return "Name: " + name
+             + " (" + mannOderFrau() + "), "
+             + kg + "kg, "
+             + cm + "cm ("
+             + gewichtsklasse() + ")";
     }
 }
