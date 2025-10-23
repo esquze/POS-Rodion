@@ -1,10 +1,4 @@
 
-/**
- * Write a description of class FizzBuzz here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class FizzBuzz
 {
     public static void fizzBuzz () {
