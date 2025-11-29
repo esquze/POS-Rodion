@@ -10,16 +10,22 @@ public class Etappe {
     private int minuten;
 
     // Konstruktor
-    public Etappe(float laenge, String zielOrt) {
-        this.laenge = laenge;
-        this.zielOrt = zielOrt;
+    public Etappe(float laenge, String zielOrt, String sieger, int stunden, int minuten) {
+        this.setLaenge(laenge);
+        this.setZielOrt(zielOrt);
+        this.setSieger(sieger);
+        this.setStunden(stunden);
+        this.setMinuten(minuten);
     }
 
     // Getter/Setter für Nummer
     public int getNummer() {
         return nummer;
     }
-    public int getNummer(int nummer) {
+    public int setNummer(int nummer) {
+        if (nummer <= 0) {
+            throw new IllegalArgumentException("Nummer '" + nummer + "' ist ungültug, muss größer 0 sein");
+        }
         this.nummer = nummer;
         return nummer;
     }
@@ -28,7 +34,10 @@ public class Etappe {
     public float getLaenge() {
         return laenge;
     }
-    public float getLaenge(float laenge) {
+    public float setLaenge(float laenge) {
+        if (laenge <= 0) {
+            throw new IllegalArgumentException("Länge '" + laenge + "' ist ungültug, muss größer 0 sein");
+        }
         this.laenge = laenge;
         return laenge;
     }
@@ -37,7 +46,10 @@ public class Etappe {
     public String getZielOrt() {
         return zielOrt;
     }
-    public String getZielOrt(String zielOrt) {
+    public String setZielOrt(String zielOrt) {
+        if (zielOrt == null || zielOrt.isBlank()){
+            throw new IllegalArgumentException("ZielOrt ist null oder leer");
+        }
         this.zielOrt = zielOrt;
         return zielOrt;
     }
@@ -46,7 +58,10 @@ public class Etappe {
     public String getSieger() {
         return sieger;
     }
-    public String getSieger(String sieger) {
+    public String setSieger(String sieger) {
+        if (sieger == null || sieger.isBlank()){
+            throw new IllegalArgumentException("Sieger ist null oder leer");
+        }
         this.sieger = sieger;
         return sieger;
     }
@@ -55,7 +70,10 @@ public class Etappe {
     public int getStunden() {
         return stunden;
     }
-    public int getStunden(int stunden) {
+    public int setStunden(int stunden) {
+        if (stunden <= 0) {
+            throw new IllegalArgumentException("Stunden '" + stunden + "' ist ungültug, muss größer 0 sein");
+        }
         this.stunden = stunden;
         return stunden;
     }
@@ -64,7 +82,10 @@ public class Etappe {
     public int getMinuten() {
         return minuten;
     }
-    public int getMinuten(int minuten) {
+    public int setMinuten(int minuten) {
+        if (minuten < 0 || minuten > 60) {
+            throw new IllegalArgumentException("Minuten '" + minuten + "' ist ungültug, muss größer 0 und kleiner 60 sein");
+        }
         this.minuten = minuten;
         return minuten;
     }
@@ -73,7 +94,7 @@ public class Etappe {
     public String toString() {
         return("Etappe " + nummer + ": Länge " + laenge +
                 " km, Ziel-Ort " + zielOrt + ", Sieger " + sieger +
-                ", Dauer " + stunden + ":" + minuten);
+                ", Dauer " + stunden + ":" + minuten + "\n");
     }
 
 }
