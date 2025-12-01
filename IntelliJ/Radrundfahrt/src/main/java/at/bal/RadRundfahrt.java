@@ -58,8 +58,8 @@ public class RadRundfahrt {
         return gesLaenge;
     }
 
-    public float anzEtappen() {
-        float gesEtappen = 0;
+    public int anzEtappen() {
+        int gesEtappen = 0;
         for (Etappe etappe : etappen) {
             if (etappe != null) {
                 gesEtappen++;
@@ -82,17 +82,82 @@ public class RadRundfahrt {
         return siege;
     }
 
+    public String alleGewonnen() {
+        String gewonnen = "";
+        for (int i = 0; i < etappen.length; i++) {
+            Etappe etappe = etappen[i];
+            if (etappe != null) {
+                String sieger = etappe.getSieger();
+                int anzahl = anzGewonnen(sieger);
+                boolean schonGezählt = false;
 
+                for (int j = 0; j < i; j++) {
+                    if (etappen[j] != null && sieger.equals(etappen[j].getSieger())) {
+                        schonGezählt = true;
+                        break;
+                    }
+                }
+                if (schonGezählt) {
+                    continue;
+                }
+
+                gewonnen += sieger + ": Siege " + anzahl + "\n";
+            }
+        }
+        return gewonnen;
+    }
+
+    public float sucheLaengsteEtappe() {
+        float rv = 0;
+        if (etappen[0] != null) {
+            rv = etappen[0].getLaenge();
+        }
+        for (int i = 0; i < etappen.length; i++) {
+            for (int j = i + 1; j < etappen.length; j++) {
+                if (etappen[j] != null && rv < etappen[j].getLaenge()) {
+                    rv = etappen[j].getLaenge();
+                }
+            }
+        }
+        return rv;
+    }
+
+    public boolean annullieren(int pos) {
+        for (int i = 0; i < etappen.length; i++) {
+            if (etappen[i] == etappen[pos]) {
+                etappen[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int berechneGesamtdauer() {
+        int stunden = 0;
+        int minuten = 0;
+        for (int i = 0; i < etappen.length; i++) {
+            if (etappen[i] != null) {
+                stunden += etappen[i].getStunden();
+            }
+            if (etappen[i] != null && etappen[i].getMinuten() > 30) {
+                minuten += etappen[i].getMinuten();
+            }
+        }
+        return stunden / 60 + minuten;
+    }
 
     public String toString() {
         return  this.name +
                 "\n=====================" +
-                "\nEtappen: " +
+                "\nEtappen: " + anzEtappen() +
                 "\nGesamt-Länge: " + berechneGesamtlaenge() + " km" +
-                "\nGesamt-Dauer: " +
-                "\nLängste Etappe: " +
+                "\nGesamt-Dauer: " + berechneGesamtdauer() + " Stunden" +
+                "\nLängste Etappe: " + sucheLaengsteEtappe() +
                 "\nEtappen-Durchschnitt: " + berechneDurchschnittslaenge() + " km" +
                 "\n" +
-                "\n" + etappenUebersicht();
+                "\n" + etappenUebersicht() +
+                "\n" +
+                "\nSiege: " +
+                "\n" + alleGewonnen();
     }
 }
