@@ -100,7 +100,6 @@ public class RadRundfahrt {
                 if (schonGezählt) {
                     continue;
                 }
-
                 gewonnen += sieger + ": Siege " + anzahl + "\n";
             }
         }
