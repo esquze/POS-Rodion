@@ -1,6 +1,7 @@
 package at.bal;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Personalbuero {
     private ArrayList<Mitarbeiter> employees;
@@ -37,6 +38,43 @@ public class Personalbuero {
 
     public int zaehleMitarbeiter() {
         return employees.size();
+    }
+
+    // wenn keine MA vorhanden, dann return -99;
+    public int kuendigenAlle(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("Fehler: null");
+        }
+        if (employees.isEmpty()) {
+            return -99;
+        }
+        int count = 0;
+        Iterator<Mitarbeiter> iterator = employees.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getName().equals(name)) {
+                // employees.remove(iterator.next()); //FEHLER SO NICHT
+                iterator.remove();
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public double kuendigen(double gehalt) {
+        if (gehalt <= 0.0) {
+            throw new IllegalArgumentException("Fehler: Gehalt 0.0 oder kleiner");
+        }
+        Iterator<Mitarbeiter> iterator = employees.iterator();
+        double summe = 0.0;
+        Mitarbeiter ma;
+        while (iterator.hasNext()) {
+            ma = iterator.next();
+            if (ma.berechneGehalt() > gehalt) {
+                summe += ma.berechneGehalt();
+                iterator.remove();
+            }
+        }
+        return summe;
     }
 
     @Override
