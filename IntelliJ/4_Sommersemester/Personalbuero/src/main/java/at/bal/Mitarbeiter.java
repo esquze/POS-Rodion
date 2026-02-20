@@ -62,6 +62,16 @@ public class Mitarbeiter {
         return 1500.0 + berechneDienstalter()*50.0;
     }
 
+    public double berechnePraemie() {
+        return switch (berechneDienstalter()) {
+            case 15 -> berechneGehalt(); // break;
+            case 20 -> berechneGehalt() * 2; // break;
+            case 25 -> berechneGehalt() * 3; // break;
+            case 50 -> berechneGehalt() * 7; // break; // 14 Gehälter / 2 * 7
+            default -> 0.0;
+        };
+    }
+
     @Override
     public String toString() {
         return "Name: " + name +
