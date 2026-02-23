@@ -20,7 +20,7 @@ class PersonalbueroTest {
 
     @Test
     void testMitarbeiter() {
-        Mitarbeiter mitarbeiter = new Mitarbeiter("Anna", Year.of(2001), Year.now());
+        Mitarbeiter mitarbeiter = new Angestellter("Anna", Year.of(2001), Year.now());
         System.out.println(mitarbeiter);
     }
 
@@ -28,9 +28,9 @@ class PersonalbueroTest {
     void testKuendigenAlle_SollFunktionieren_dreiMA_zweiHubert_returns2 () {
         //given
         Personalbuero personalbuero = new Personalbuero();
-        Mitarbeiter ma1 = new Mitarbeiter("Hubert", Year.of(2000), Year.now());
-        Mitarbeiter ma3 = new Mitarbeiter("Hubert", Year.of(2001), Year.now());
-        Mitarbeiter ma2 = new Mitarbeiter("Anna", Year.of(2000), Year.now());
+        Mitarbeiter ma1 = new Angestellter("Hubert", Year.of(2000), Year.now());
+        Mitarbeiter ma3 = new Angestellter("Hubert", Year.of(2001), Year.now());
+        Mitarbeiter ma2 = new Angestellter("Anna", Year.of(2000), Year.now());
         personalbuero.aufnehmen(ma1);
         personalbuero.aufnehmen(ma2);
         personalbuero.aufnehmen(ma3);
@@ -50,7 +50,7 @@ class PersonalbueroTest {
     void testKuendigenAlle_sollFunktionieren_einMA_einHubert_returns1() {
         // given
         Personalbuero personalbuero = new Personalbuero();
-        Mitarbeiter ma1 = new Mitarbeiter("Hubert", Year.of(2000), Year.now());
+        Mitarbeiter ma1 = new Angestellter("Hubert", Year.of(2000), Year.now());
         personalbuero.aufnehmen(ma1);
         System.out.println(personalbuero);
         System.out.println();

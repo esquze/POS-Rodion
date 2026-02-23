@@ -40,6 +40,22 @@ public class Personalbuero {
         return employees.size();
     }
 
+    public int zahleAlter(int alter) {
+        if(alter < 15) {
+            throw new IllegalArgumentException("Fehler: zu jung");
+        }
+        if(employees.isEmpty()) {
+            return -99;
+        }
+        int count = 0;
+        for(Mitarbeiter ma: employees) {
+            if(ma.berechneAlter() == alter) {
+               count++;
+            }
+        }
+        return count;
+    }
+
     // wenn keine MA vorhanden, dann return -99;
     public int kuendigenAlle(String name) {
         if (name == null) {
@@ -75,6 +91,45 @@ public class Personalbuero {
             }
         }
         return summe;
+    }
+
+    public Mitarbeiter kuendigen(int pos) {
+        if (pos < 0 || pos >= employees.size()) {
+            throw new IllegalArgumentException("Fehler: index ungültig");
+        }
+        return employees.remove(pos);
+    }
+
+    public boolean kuendigen(String name) {
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Fehler: name ungültig");
+        }
+        for (Mitarbeiter ma: employees) {
+            if (ma.getName().equals(name)) {
+                return employees.remove(ma);
+            }
+        }
+        return false;
+    }
+
+    public boolean kuendigen(Mitarbeiter ma) {
+        if (ma == null) {
+            throw new IllegalArgumentException("Fehler: null");
+        }
+        return employees.remove(ma);
+    }
+
+    public void gehaltListe() {
+        System.out.println("Gehaltsliste:\n");
+        if (!employees.isEmpty()) {
+            for (Mitarbeiter ma: employees) {
+                System.out.println("Name: " + ma.getName());
+                System.out.println(", Gehalt: " + ma.berechneGehalt() + " EUR");
+            }
+            System.out.println("Gehaltsumme: " + berechneGehaltsumme() + " EUR");
+        } else {
+            System.out.println("Keine MitarbeiterInnen vorhanden");
+        }
     }
 
     @Override
