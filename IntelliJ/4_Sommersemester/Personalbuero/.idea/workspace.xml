@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83b07cd1-21b4-432b-853e-c763facff698" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Angestellter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Angestellter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Freelancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Freelancer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Mitarbeiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Mitarbeiter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/at/bal/PersonalbueroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/at/bal/PersonalbueroTest.java" afterDir="false" />
@@ -22,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -33,6 +33,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3A4bMMGa0nao2dl17JC2S3ZErLr" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

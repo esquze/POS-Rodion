@@ -10,8 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PersonalbueroTest {
 
+    private Personalbuero personalbuero;
+    private Arzt arzt;
+
     @BeforeEach
     void setUp() {
+        this.personalbuero = new Personalbuero();
+        this.arzt = new Arzt("Hr.Mohamad", Year.of(2006), Year.now(), 10,120);
     }
 
     @AfterEach
@@ -87,4 +92,13 @@ class PersonalbueroTest {
         System.out.println(personalbuero);
     }
 
+    @Test
+    void testArzt() {
+        System.out.println(arzt);
+        System.out.println();
+        assertEquals(10.0, arzt.berechneStundensatz());
+        assertEquals(120.0, arzt.berechneGehalt());
+        assertTrue(personalbuero.aufnehmen(arzt));
+        personalbuero.gehaltsListe();
+    }
 }

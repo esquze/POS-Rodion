@@ -1,14 +1,14 @@
 package at.bal;
 
-import java.util.ArrayList;
+import java.time.Year;
+import java.util.LinkedList;
 import java.util.Iterator;
 
 public class Personalbuero {
-    private ArrayList<Mitarbeiter> employees;
+    private LinkedList<Mitarbeiter> employees;
 
     public Personalbuero() {
-        employees = new ArrayList<>();
-
+        employees = new LinkedList<>();
     }
 
     public boolean aufnehmen(Mitarbeiter mitarbeiter) {
@@ -38,22 +38,6 @@ public class Personalbuero {
 
     public int zaehleMitarbeiter() {
         return employees.size();
-    }
-
-    public int zahleAlter(int alter) {
-        if(alter < 15) {
-            throw new IllegalArgumentException("Fehler: zu jung");
-        }
-        if(employees.isEmpty()) {
-            return -99;
-        }
-        int count = 0;
-        for(Mitarbeiter ma: employees) {
-            if(ma.berechneAlter() == alter) {
-               count++;
-            }
-        }
-        return count;
     }
 
     // wenn keine MA vorhanden, dann return -99;
@@ -93,6 +77,37 @@ public class Personalbuero {
         return summe;
     }
 
+    public int kuendigenAlle(Year eintrJahr) {
+        if(eintrJahr == null || eintrJahr.isAfter(Year.now()) || employees.isEmpty()) {
+            return -99;
+        }
+        Iterator<Mitarbeiter> iterator = employees.iterator();
+        int anzahlGekuendigt = 0;
+        while(iterator.hasNext()) {
+            if(iterator.next().getEintrJahr().equals(eintrJahr)) {
+                iterator.remove();
+                anzahlGekuendigt++;
+            }
+        }
+        return anzahlGekuendigt;
+    }
+
+    public int zahleAlter(int alter) {
+        if(alter < 15) {
+            throw new IllegalArgumentException("Fehler: zu jung");
+        }
+        if(employees.isEmpty()) {
+            return -99;
+        }
+        int count = 0;
+        for(Mitarbeiter ma: employees) {
+            if(ma.berechneAlter() == alter) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public Mitarbeiter kuendigen(int pos) {
         if (pos < 0 || pos >= employees.size()) {
             throw new IllegalArgumentException("Fehler: index ungültig");
@@ -119,7 +134,7 @@ public class Personalbuero {
         return employees.remove(ma);
     }
 
-    public void gehaltListe() {
+    public void gehaltsListe() {
         System.out.println("Gehaltsliste:\n");
         if (!employees.isEmpty()) {
             for (Mitarbeiter ma: employees) {
@@ -130,6 +145,45 @@ public class Personalbuero {
         } else {
             System.out.println("Keine MitarbeiterInnen vorhanden");
         }
+    }
+
+    public boolean sortierenNachName() {
+        employees.sort(null);
+        return true;
+    }
+
+    public int summeFreelancerStunden() {
+        if(employees.isEmpty()) {
+            return -99;
+        }
+        int summeStunden = 0;
+        for (Mitarbeiter ma : employees) {
+            if(ma instanceof Freelancer) {
+                summeStunden += ((Freelancer) ma).getStunden();
+            }
+        }
+        return summeStunden;
+    }
+
+    public int zaehleAngestellte() {
+        if (employees.isEmpty()) {
+            return -99;
+        }
+        int anzahlAngestellte = 0;
+        for (Mitarbeiter ma : employees) {
+            if (ma instanceof Angestellter) {
+                anzahlAngestellte++;
+            }
+        }
+
+        return anzahlAngestellte;
+    }
+
+    public Mitarbeiter getMitarbeiter(int index) {
+        if(index < 0 || index >= employees.size()) {
+            return null;
+        }
+        return employees.get(index);
     }
 
     @Override

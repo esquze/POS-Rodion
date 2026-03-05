@@ -1,6 +1,7 @@
 package at.bal;
 
 import java.time.Year;
+import java.util.Objects;
 
 public abstract class Mitarbeiter {
 
@@ -70,6 +71,21 @@ public abstract class Mitarbeiter {
             case 50 -> berechneGehalt() * 7; // break; // 14 Gehälter / 2 * 7
             default -> 0.0;
         };
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Mitarbeiter that = (Mitarbeiter) o;
+        return Objects.equals(name, that.name) && Objects.equals(gebJahr, that.gebJahr) && Objects.equals(eintrJahr, that.eintrJahr);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + gebJahr.hashCode();
+        result = 31 * result + eintrJahr.hashCode();
+        return result;
     }
 
     @Override

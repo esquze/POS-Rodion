@@ -1,6 +1,7 @@
 package at.bal;
 
 import java.time.Year;
+import java.util.Objects;
 
 public class Freelancer extends Mitarbeiter{
     private double stundenSatz;
@@ -43,6 +44,22 @@ public class Freelancer extends Mitarbeiter{
     @Override
     public double berechneGehalt() {
         return stunden * stundenSatz;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Freelancer that = (Freelancer) o;
+        return Double.compare(stundenSatz, that.stundenSatz) == 0 && stunden == that.stunden;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + Double.hashCode(stundenSatz);
+        result = 31 * result + stunden;
+        return result;
     }
 
     @Override
