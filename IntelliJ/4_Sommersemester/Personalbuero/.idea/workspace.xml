@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="83b07cd1-21b4-432b-853e-c763facff698" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Angestellter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Angestellter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Freelancer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Freelancer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Mitarbeiter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Mitarbeiter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/at/bal/PersonalbueroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/at/bal/PersonalbueroTest.java" afterDir="false" />
     </list>
@@ -55,6 +52,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="at.bal" />
+    </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>

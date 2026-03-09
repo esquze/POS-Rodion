@@ -1,6 +1,7 @@
 package at.bal;
 
 import java.time.Year;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.Iterator;
 
@@ -92,7 +93,7 @@ public class Personalbuero {
         return anzahlGekuendigt;
     }
 
-    public int zahleAlter(int alter) {
+    public int zaehleAlter(int alter) {
         if(alter < 15) {
             throw new IllegalArgumentException("Fehler: zu jung");
         }
@@ -150,6 +151,14 @@ public class Personalbuero {
     public boolean sortierenNachName() {
         employees.sort(null);
         return true;
+    }
+
+    public void sortierenNachAlter() {
+        employees.sort(new AlterComperator());
+    }
+
+    public void sortierenNachDienstalter() {
+        employees.sort(Comparator.comparingInt(Mitarbeiter::berechneDienstalter));
     }
 
     public int summeFreelancerStunden() {
