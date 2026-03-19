@@ -6,7 +6,7 @@ public class Wetterstation extends Messstation {
 
     private double temperatur;
 
-    public Wetterstation(String standort, Year installationsJahr, double messwert) {
+    public Wetterstation(String standort, Year installationsJahr, double messwert, double temperatur) {
         super(standort, installationsJahr, messwert);
         setTemperatur(temperatur);
     }

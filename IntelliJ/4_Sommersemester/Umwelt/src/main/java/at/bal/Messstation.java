@@ -2,7 +2,7 @@ package at.bal;
 
 import java.time.Year;
 
-public abstract class Messstation {
+public abstract class Messstation implements Comparable<Messstation> {
 
     private String standort;
     private Year installationsJahr;
@@ -50,6 +50,7 @@ public abstract class Messstation {
     public abstract double berechneUmweltIndex();
     public abstract String getStationTyp();
 
+    @Override
     public int compareTo(Messstation anderes) {
         return Double.compare(messwert, anderes.getMesswert());
     }

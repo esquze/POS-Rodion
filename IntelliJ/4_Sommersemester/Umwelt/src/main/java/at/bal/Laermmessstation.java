@@ -6,7 +6,7 @@ public class Laermmessstation extends Messstation{
 
     private double maxErlaubterPegel;
 
-    public Laermmessstation(String standort, Year installationsJahr, double messwert) {
+    public Laermmessstation(String standort, Year installationsJahr, double messwert, double maxErlaubterPegel) {
         super(standort, installationsJahr, messwert);
         setMaxErlaubterPegel(maxErlaubterPegel);
     }

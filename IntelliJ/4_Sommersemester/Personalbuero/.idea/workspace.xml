@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="83b07cd1-21b4-432b-853e-c763facff698" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/at/bal/PersonalbueroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/at/bal/PersonalbueroTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Laermmessstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Laermmessstation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Messstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Messstation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/UmweltBehoerde.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/UmweltBehoerde.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Wetterstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Wetterstation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
