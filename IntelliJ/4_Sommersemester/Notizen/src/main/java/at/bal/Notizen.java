@@ -1,20 +1,19 @@
 package at.bal;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class Notizen {
 
-    List<String> notizen;
+    private List<String> notizen;
 
     public Notizen() {
         notizen = new ArrayList<>();
     }
 
-    public boolean notizHinzufuegen(String notiz) {
+    public boolean notizHinzufuegen(String notiz) throws NotizException {
         if (notiz == null || notiz.isBlank()) {
-            throw new IllegalArgumentException("Fehler: null oder leer");
+            throw new NotizException("Fehler: null oder leer");
         }
         if (this.notizen.contains(notiz)) {
             return false;
@@ -34,18 +33,15 @@ public class Notizen {
         notizen.sort(new LaengeComparator());
     }
 
-    public boolean notizEntfernen(String notiz) {
+    public boolean notizEntfernen(String notiz) throws NotizException {
         if (!checkNotiz(notiz)) {
-            throw new IllegalArgumentException("Fehler: notiz ungültig");
+            throw new NotizException("Fehler: notiz ungültig");
         }
         return notizen.remove(notiz);
     }
 
     public boolean checkNotiz(String notiz) {
-        if (notiz == null || notiz.isBlank()) {
-            return false;
-        }
-        return true;
+        return notiz != null && !notiz.isBlank();
     }
 
     public void ausgebenNotizen() {
@@ -58,6 +54,45 @@ public class Notizen {
         }
     }
 
+    public void save() throws NotizException {
+        String filepath = "src/main/resources/notizen.ser";
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath))) {
 
+            oos.writeObject(notizen);
+
+        } catch (FileNotFoundException e) {
+            throw new NotizException("Die Datei " + filepath + " nicht gefunden: " + e.getMessage());
+        } catch (IOException e) {
+            throw new NotizException("I/O-Probmlem mit Datei " + filepath + ": " + e.getMessage());
+        }
+    }
+
+    public void load() throws NotizException {
+        String filepath = "src/main/resources/notizen.ser";
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath))) {
+
+            List<?> notizenLoad = (List<?>) ois.readObject();
+
+            ArrayList<String> notizenBackup = new ArrayList<>();
+            Collections.copy(notizenBackup, notizen);
+
+            notizen.clear(); // alles weg
+            for (Object o: notizenLoad) {
+                if (o instanceof String) {
+                    notizen.add((String) o);
+                } else {
+                    notizen = notizenBackup;
+                    throw new NotizException("Fehler mit den Notizen in " + filepath + ", andere Informationen gefunden");
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new NotizException("Die Datei " + filepath + " kann nicht geladen werden: " + e.getMessage());
+        } catch (IOException e) {
+            throw new NotizException("I/O-Probmlem mit Datei " + filepath + ": " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new NotizException("Die Datei " + filepath + " enthält keine Notizen: " + e.getMessage());
+        }
+    }
 
 }

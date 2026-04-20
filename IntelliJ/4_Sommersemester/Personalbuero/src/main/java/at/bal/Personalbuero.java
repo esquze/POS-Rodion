@@ -1,5 +1,6 @@
 package at.bal;
 
+import java.io.*;
 import java.time.Year;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -193,6 +194,32 @@ public class Personalbuero {
             return null;
         }
         return employees.get(index);
+    }
+
+    // -------------------------- files ---------------------------
+
+    public void save() {
+        String filepath = "src/main/resources/employees.ser";
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filepath))) {
+
+            oos.writeObject(employees);
+
+        } catch (FileNotFoundException e) {
+            throw new PersonalException("Die Datei " + filepath + " nicht gefunden: " + e.getMessage());
+        } catch (IOException e) {
+            throw new PersonalException("I/O-Probmlem mit Datei " + filepath + ": " + e.getMessage());
+        }
+    }
+
+    public void load() {
+        String filepath = "src/main/resources/employees.ser";
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filepath))) {
+
+        } catch (FileNotFoundException e) {
+            throw new PersonalException("Die Datei " + filepath + " kann nicht geladen werden: " + e.getMessage());
+        } catch (IOException e) {
+            throw new PersonalException("I/O-Probmlem mit Datei " + filepath + ": " + e.getMessage());
+        }
     }
 
     @Override

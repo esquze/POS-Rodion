@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83b07cd1-21b4-432b-853e-c763facff698" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Laermmessstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Laermmessstation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Messstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Messstation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/UmweltBehoerde.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/UmweltBehoerde.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Wetterstation.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Umwelt/src/main/java/at/bal/Wetterstation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/src/main/java/at/bal/Beinpresse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/src/main/java/at/bal/Ergometer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/src/main/java/at/bal/Gym.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/src/main/java/at/bal/Maschine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Gym/src/main/java/at/bal/PreisComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Bootsverleih/src/main/java/at/bal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Bootsverleih/src/main/java/at/bal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notizen/src/main/java/at/bal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notizen/src/main/java/at/bal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Notizen/src/main/java/at/bal/Notizen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notizen/src/main/java/at/bal/Notizen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/bal/Personalbuero.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +29,7 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>

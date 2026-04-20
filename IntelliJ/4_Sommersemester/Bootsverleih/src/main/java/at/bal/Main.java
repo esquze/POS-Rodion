@@ -3,10 +3,10 @@ package at.bal;
 public class Main {
 
     public static void main(String[] args) {
-//        testHinzufuegen();
-//        testSortieren();
+        testHinzufuegen();
+        testSortieren();
         testEntfernen();
-//        testEntfernenAlle();
+        testEntfernenAlle();
     }
 
     private static void testEntfernenAlle() {
