@@ -95,4 +95,26 @@ public class Notizen {
         }
     }
 
+    public void exportNotizen() throws NotizException {
+        String filepath = "src/main/resources/exportNotizen.txt";
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filepath))) {
+            bw.write(this.toString());
+        } catch (IOException e) {
+            throw new NotizException("Fehler beim Export: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Notizen:\n");
+        if (notizen.isEmpty()) {
+            sb.append("keine Notizen vorhanden");
+        } else {
+            for (String notiz : notizen)  {
+                sb.append(notiz).append("\n");
+            }
+        }
+        return sb.toString();
+    }
+
 }

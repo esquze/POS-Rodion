@@ -61,7 +61,45 @@ public class Main {
 
         testSave();
         testLoad();
+        testExportNotizen();
+        testExportNotizenLeer();
     }
+
+    private static void testExportNotizen() {
+        try {
+            Notizen notizen = new Notizen();
+
+            System.out.println(notizen.notizHinzufuegen("Brot einkaufen"));
+            System.out.println(notizen.notizHinzufuegen("Brot einkaufen"));
+            System.out.println(notizen.notizHinzufuegen("Anna anrufen"));
+            System.out.println(notizen.notizHinzufuegen("Film Van Damme streamen"));
+            System.out.println(notizen.notizHinzufuegen("Chips einkaufen"));
+            System.out.println(notizen.notizHinzufuegen("Ins Gym gehen"));
+            notizen.ausgebenNotizen();
+            System.out.println();
+            notizen.exportNotizen();
+            System.out.println("Notizen wurden exportiert nach exportNotizen.txt");
+            System.out.println();
+        } catch (NotizException e) {
+            System.out.println("Unerwartete Exception: " + e.getMessage());
+        }
+    }
+
+
+    private static void testExportNotizenLeer() {
+        try {
+            Notizen notizen = new Notizen();
+
+            notizen.ausgebenNotizen();
+            System.out.println();
+            notizen.exportNotizen();
+            System.out.println("Notizen wurden exportiert nach exportNotizen.txt");
+            System.out.println();
+        } catch (NotizException e) {
+            System.out.println("Unerwartete Exception: " + e.getMessage());
+        }
+    }
+
 
     private static void testSave() {
         try {
