@@ -10,8 +10,8 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.vaadin.lineawesome.LineAwesomeIconUrl;
 
-@PageTitle("Hello World")
-@Route("")
+@PageTitle("Hello 4AAIF")
+@Route("hello-4aaif")
 @Menu(order = 2, icon = LineAwesomeIconUrl.GLOBE_SOLID)
 public class HelloWorldView extends HorizontalLayout {
 
@@ -29,7 +29,7 @@ public class HelloWorldView extends HorizontalLayout {
         setMargin(true);
         setVerticalComponentAlignment(Alignment.END, name, sayHello);
 
-        add(name, sayHello);
+        add(sayHello, name);
     }
 
 }
