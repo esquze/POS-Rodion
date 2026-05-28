@@ -1,19 +1,18 @@
-package at.bal;
+package org.example;
 
 public class Main {
     static void main() {
-        testSaveKurse(); // 3 Kurse
-        testPrivatKurseCsv();
-        testImportKurseCsv();
+       // testImportKurseCsv();
+       // testPrivatKurseCsv();
+       // testSaveKurse();
+        testSortiereKurseNachPreis();
     }
 
     private static void testImportKurseCsv() {
         try {
-            // GIVEN
             Tanzschule tanzschule = new Tanzschule("Dorn");
             System.out.println(tanzschule);
             System.out.println();
-            // WHEN THEN
 
             tanzschule.importKurseCsv();
             System.out.println("Kurse wurden geladen");
@@ -27,20 +26,17 @@ public class Main {
 
     private static void testPrivatKurseCsv() {
         try {
-            // GIVEN
             Tanzschule tanzschule = new Tanzschule("Dorn");
-            GruppenKurs gruppenKurs = new GruppenKurs(5, 40f);
-            GruppenKurs gruppenKurs1 = new GruppenKurs(3, 30f);
-            PrivatKurs privatKurs = new PrivatKurs(1, 100f);
-            tanzschule.hinzufuegen(gruppenKurs);
+            GruppenKurs gruppenKurs1 = new GruppenKurs(5, 40.0);
+            GruppenKurs gruppenKurs2 = new GruppenKurs(5, 40.0);
+            PrivatKurs privatKurs = new PrivatKurs(1,100);
             tanzschule.hinzufuegen(gruppenKurs1);
+            tanzschule.hinzufuegen(gruppenKurs2);
             tanzschule.hinzufuegen(privatKurs);
-            // WHEN
+
             tanzschule.exportPrivatKurseCsv();
             System.out.println("Die PrivatKurse wurden gespeichert");
-            // sollte in der GUI angezeigt
-            // THEN
-            // Kurse gespeichert..
+
         } catch (TanzschuleException e) {
             System.out.println("Exception bei testPrivatKurseCsv(): " + e.getMessage());
         }
@@ -48,23 +44,41 @@ public class Main {
 
     private static void testSaveKurse() {
         try {
-            // GIVEN
             Tanzschule tanzschule = new Tanzschule("Dorn");
-            GruppenKurs gruppenKurs = new GruppenKurs(5, 40f);
-            GruppenKurs gruppenKurs1 = new GruppenKurs(3, 30f);
-            PrivatKurs privatKurs = new PrivatKurs(1, 100f);
-            tanzschule.hinzufuegen(gruppenKurs);
+            GruppenKurs gruppenKurs1 = new GruppenKurs(5, 40.0);
+            GruppenKurs gruppenKurs2 = new GruppenKurs(5, 40.0);
+            PrivatKurs privatKurs = new PrivatKurs(1,100);
             tanzschule.hinzufuegen(gruppenKurs1);
+            tanzschule.hinzufuegen(gruppenKurs2);
             tanzschule.hinzufuegen(privatKurs);
-            // WHEN
+
             tanzschule.saveKurse();
             System.out.println("Die Kurse wurden gespeichert");
-            // sollte in der GUI angezeigt
-            // THEN
-            // Kurse gespeichert..
+
         } catch (TanzschuleException e) {
             System.out.println("Exception bei testLoadKurse(): " + e.getMessage());
         }
+    }
+
+    private static void testSortiereKurseNachPreis() {
+        try {
+            Tanzschule tanzschule = new Tanzschule("Dorn");
+            GruppenKurs gruppenKurs1 = new GruppenKurs(5, 300.0);
+            GruppenKurs gruppenKurs2 = new GruppenKurs(3, 200.0);
+            PrivatKurs privatKurs = new PrivatKurs(1,500.0);
+            tanzschule.hinzufuegen(gruppenKurs1);
+            tanzschule.hinzufuegen(gruppenKurs2);
+            tanzschule.hinzufuegen(privatKurs);
+            System.out.println(tanzschule);
+            System.out.println();
+
+            tanzschule.sortierenNachPreis();
+            System.out.println(tanzschule);
+
+        } catch (TanzschuleException e) {
+            System.out.println("asdas" + e);
+        }
+
     }
 
 }
