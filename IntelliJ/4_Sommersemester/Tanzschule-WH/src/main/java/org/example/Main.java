@@ -76,7 +76,7 @@ public class Main {
             System.out.println(tanzschule);
 
         } catch (TanzschuleException e) {
-            System.out.println("asdas" + e);
+            System.out.println("asas" + e);
         }
 
     }

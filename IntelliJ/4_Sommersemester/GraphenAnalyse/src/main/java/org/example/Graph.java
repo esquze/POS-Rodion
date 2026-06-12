@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Graph {
 
@@ -50,6 +48,92 @@ public class Graph {
 
         queue.add(start);
         distances[start] = 0;
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            for (int i = 0; i < graph.length; i++) {
+                if (graph[current][i] && !visited[i]) {
+                    visited[i] = true;
+                    distances[i] = distances[current] + 1;
+                    queue.add(i);
+                }
+            }
+        }
+        return distances;
+    }
+
+    public int eccentricity(int node) {
+        int[] distances = bfs(node);
+        int max = 0;
+        for (int i = 0; i < distances.length; i++) {
+            if (distances[i] > max) {
+                max = distances[i];
+            }
+        }
+        return max;
+    }
+
+    public int radius() {
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            int ecc = eccentricity(i);
+            if (ecc < min) {
+                min = ecc;
+            }
+        }
+        return min;
+    }
+
+    public int durchmesser() {
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int ecc = eccentricity(i);
+            if (ecc > max) {
+                max = ecc;
+            }
+        }
+        return max;
+    }
+
+    public List<Integer> zentrum() {
+        List<Integer> result = new ArrayList<>();
+        int r = radius();
+        for (int i = 0; i < n; i++) {
+            if (eccentricity(i) == r) {
+                result.add(i);
+            }
+        }
+        return result;
+    }
+
+    public void dfs(int node, boolean[] visited) {
+        visited[node] = true;
+        for (int i = 0; i < n; i++) {
+            if (graph[node][i] && !visited[i]) {
+                dfs(i, visited);
+            }
+        }
+    }
+
+    public int components() {
+        boolean[] visited = new boolean[n];
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
+                dfs(i, visited);
+                count++;
+            }
+        }
+        return count;
+    }
+
+    void dfsIgnore(int node, boolean[] visited, int ignore) {
+        visited[node] = true;
+        for (int i = 0; i < n; i++) {
+            if (i != ignore && graph[node][i] && !visited[i]) {
+                dfsIgnore(i, visited, ignore);
+            }
+        }
     }
 
 }

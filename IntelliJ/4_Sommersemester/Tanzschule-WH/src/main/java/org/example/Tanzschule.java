@@ -34,6 +34,13 @@ public class Tanzschule {
         return false;
     }
 
+    public boolean entfernen(Kurs kurs) throws TanzschuleException {
+        if (kurs == null || kurse.isEmpty()) {
+            return false;
+        }
+        return kurse.remove(kurs);
+    }
+
     public void sortierenNachPreis() {
         kurse.sort(Comparator.comparingDouble(Kurs::preis));
     }

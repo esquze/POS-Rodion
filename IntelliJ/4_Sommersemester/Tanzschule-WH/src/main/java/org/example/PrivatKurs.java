@@ -20,7 +20,7 @@ public class PrivatKurs extends Kurs {
         try {
             setPreisProTag(Double.parseDouble(lineParts[2]));
         } catch (NumberFormatException e) {
-            throw new TanzschuleException("Fehler: " + lineParts[1] + " ist kein Zahl");
+            throw new TanzschuleException("Fehler: " + lineParts[2] + " ist kein Zahl");
         }
     }
 
